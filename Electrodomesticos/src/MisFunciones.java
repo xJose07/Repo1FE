@@ -8,11 +8,11 @@ public abstract class MisFunciones {
         lista[0]=new Electrodomestico();
         lista[1]=new Lavadora(70.0f,30.0f);
         lista[2]=new Lavadora(50.0f,10.0f);
-        lista[3]=new Lavadora(23.0f,64.0f,"Blanco",'H',45.0f);
+        lista[3]=new Tostadora(4,64.0f,"Blanco",'H',45.0f);
         lista[4]=new Lavadora(75.0f,32.0f,"gris",'A',200.0f);
     
         lista[5]=new Electrodomestico();
-        lista[6]=new Television(35.0f,25.0f);
+        lista[6]=new Tostadora(35.0f,25.0f);
         lista[7]=new Television(76.0f,60.0f);
         lista[8]=new Television(55.0f,true,120.0f,"azUl",'B',100.0f);
         lista[9]=new Television(89.0f,false,400.0f,"NEGRO",'A',150.0f);
@@ -29,6 +29,9 @@ public abstract class MisFunciones {
             else if(lista[i] instanceof Television){
                 out+="TV: "+lista[i].precioFinal()+" euros\n";
             }
+            else if(lista[i] instanceof Tostadora){
+                out+="Tostadora: "+lista[i].precioFinal()+" euros\n";
+            }
             else{
                 out+="Electrodomestico: "+lista[i].precioFinal()+" euros\n";
             }
@@ -39,6 +42,7 @@ public abstract class MisFunciones {
     public static String mostrarPrecioFinal(Electrodomestico[] lista){
         float totalTV=0.0f;
         float totalLavadora=0.0f;
+        float totalTostadora=0.0f;
         float totalElectrodomesticos=0.0f;
         for(int i=0;i<lista.length;i++){
             if(lista[i] instanceof Lavadora){
@@ -47,11 +51,15 @@ public abstract class MisFunciones {
             else if(lista[i] instanceof Television){
                 totalTV+=lista[i].precioFinal();
             }
+            else if(lista[i] instanceof Tostadora){
+                totalTostadora+=lista[i].precioFinal();
+            }
             totalElectrodomesticos+=lista[i].precioFinal();
         }
         return 
             String.format("Precio total Televisores: %.1f euros\n",totalTV)+
             String.format("Precio total Lavadoras: %.1f euros\n",totalLavadora)+
+            String.format("Precio total Tostadoras: %.1f euros\n",totalTostadora)+
             String.format("Precio total Electrodomésticos: %.1f euros\n",totalElectrodomesticos);
     }
 
